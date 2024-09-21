@@ -6,9 +6,14 @@ float Media(float nota1, float nota2, float nota3){
     float media;
     if(nota3<0){
         media = (nota1+nota2)/2;
+    }else if(nota1<0){
+        media = (nota2+nota3)/2;
+    }else if(nota2<0){
+        media = (nota1+nota3)/2;
     }else{
-        media = (nota1++nota3)/3;
+        media = (nota1+nota2+nota3)/3;
     }
+    return media;
 }
 
 float Maior(float num1, float num2){
@@ -21,7 +26,7 @@ float Maior(float num1, float num2){
 }
 
 int main(){
-    float nota1, nota2, nota3, media;
+    float nota1, nota2, nota3, media, maior1, maior2;
     
     printf("Informe a primeira nota: ");
     scanf("%f", &nota1);
@@ -31,7 +36,22 @@ int main(){
     scanf("%f", &nota3);
     
     media = Media(nota1, nota2, nota3);
-    printf("\nA media principal e: %f", media);
+    printf("\nA media principal e: %.2f", media);
+
+     if (nota1 >= nota2 && nota1 >= nota3) {
+        maior1 = nota1;
+        maior2 = Maior(nota2, nota3);
+    } else if (nota2 >= nota1 && nota2 >= nota3) {
+        maior1 = nota2;
+        maior2 = Maior(nota1, nota3);
+    } else {
+        maior1 = nota3;
+        maior2 = Maior(nota1, nota2);
+    }
+
+    media = Media(maior1, maior2, -1);
+    printf("\nA media secundaria e: %.2f", media);
+
     
     return 0;
 }
