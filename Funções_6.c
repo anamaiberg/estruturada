@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float Maior(float num1, float num2){
+int Maior(int num1, int num2){
     if(num1>num2){
         return num1;
     }
