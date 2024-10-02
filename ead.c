@@ -41,7 +41,6 @@ int main()
                 negativos[qtd_negativos] = numero;
                 qtd_negativos++;
             }
-            break;
         }
         
         else if(opcao==2){
@@ -59,12 +58,12 @@ int main()
             
             if(opcao_vetor==1){
                 for(i=0; i<qtd_positivos; i++){
+                    corresponde=0;
                     if(numero_antigo==positivos[i]){
                         printf("Qual o novo numero? ");
                         scanf("%d", &numero_novo);
                         positivos[i] = numero_novo;
                         corresponde=1;
-                        break;
                     }
                     if(corresponde==0){
                         printf("Não há numero a ser substituido");
@@ -88,6 +87,8 @@ int main()
             }
             
         }
+        printf("Opcoes:\n1- Inserir um numero\n2- Imprimir um vetor\n3-Substituir um numero no vetor\n4- Sair\nEscolha uma opcao: ");
+        scanf("%d", &opcao);
     }
     
 
