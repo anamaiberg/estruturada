@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_ALUNOS 3
+#define MAX_ALUNOS 10
 
 struct Aluno {
     int matricula;
