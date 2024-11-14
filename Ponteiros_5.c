@@ -1,36 +1,36 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+void Compara_valor(int *ponteiro_x, int *ponteiro_y){
+    int *z;
+
+    if(*ponteiro_x < *ponteiro_y)
+    {
+        z = *ponteiro_x;
+        *ponteiro_x = *ponteiro_y;
+        *ponteiro_y = z;
+    }
+}
+
+int main(){
     int x = 0, y = 0;
 
-    int *px, *py;
+    int *ponteiro_x, *ponteiro_y;
 
-    printf("Digite o valor X: ");
+    printf("Informe o valor X: ");
     scanf("%d", &x);
 
-    printf("Digite o valor Y: ");
+    printf("Informe o valor Y: ");
     scanf("%d", &y);
 
-    px = &x;
-    py = &y;
+    ponteiro_x = &x;
+    ponteiro_y = &y;
 
-    comparaValor(px, py);
+    Compara_valor(ponteiro_x, ponteiro_y);
 
     printf("Valor de X: %d | Valor de Y: %d", x, y);
 
     return 0;
 }
 
-void comparaValor(int *px, int *py)
-{
-    int *z;
 
-    if(*px < *py)
-    {
-        z = *px;
-        *px = *py;
-        *py = z;
-    }
-}

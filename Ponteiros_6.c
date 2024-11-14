@@ -1,30 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int calculaDobro(int *pa, int *pb)
-{
-    *pa = (*pa)* 2;
-    *pb = (*pb)* 2;
+int Calcula_dobro(int *ponteiro_a, int *ponteiro_b){
+    *ponteiro_a = (*ponteiro_a)* 2;
+    *ponteiro_b = (*ponteiro_b)* 2;
 
-    return *pa + *pb;
+    return *ponteiro_a + *ponteiro_b;
 }
 
-int main()
-{
+int main(){
     int a = 0, b = 0;
 
-    int *pa, *pb;
+    int *ponteiro_a, *ponteiro_b;
 
-    printf("Digite o valor A: ");
+    printf("Informe o valor A: ");
     scanf("%d", &a);
 
-    printf("Digite o valor B: ");
+    printf("Informe o valor B: ");
     scanf("%d", &b);
 
-    pa = &a;
-    pb = &b;
+    ponteiro_a = &a;
+    ponteiro_b = &b;
 
-    int resultado = calculaDobro(pa, pb);
+    int resultado = Calcula_dobro(ponteiro_a, ponteiro_b);
 
     printf("Valor de A: %d | Valor de B: %d\n", a, b);
 

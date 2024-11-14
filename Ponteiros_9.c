@@ -1,25 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+int main(){
     int i;
-    int array[5];
-    int *p_array[5];
+    int lista[5];
+    int *ponteiro_lista[5];
 
 
     for(i = 0; i < 5; i++)
-        p_array[i] = &array[i];
+        ponteiro_lista[i] = &lista[i];
 
     for(i = 0; i < 5; i++) {
-        printf("Digite o valor da posicao %d: ", i); scanf("%d", p_array[i]);
+        printf("Informe o valor da posicao %d: ", i); scanf("%d", ponteiro_lista[i]);
     }
 
     for(i = 0; i < 5; i++)
-        p_array[i] = *p_array[i] * 2;
+        ponteiro_lista[i] = *ponteiro_lista[i] * 2;
 
     for(i = 0; i < 5; i++)
-        printf("Valor na posicao %d - %d\n", i, p_array[i]);
+        printf("Valor na posicao %d - %d\n", i, ponteiro_lista[i]);
 
 
     return 0;

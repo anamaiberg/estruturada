@@ -1,43 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int ordenador(int *px, int *py, int *pz) {
+int ordenador(int *ponteiro_x, int *ponteiro_y, int *ponteiro_z){
     int temp;
 
-    if(*px == *py && *px == *pz)
+    if(*ponteiro_x == *ponteiro_y && *ponteiro_x == *ponteiro_z)
         return 1;
 
-    if(*px > *py) {
-        temp = *px;
-        *px = *py;
-        *py = temp;
+    if(*ponteiro_x > *ponteiro_y) {
+        temp = *ponteiro_x;
+        *ponteiro_x = *ponteiro_y;
+        *ponteiro_y = temp;
     }
-    if(*px > *pz) {
-        temp = *px;
-        *px = *pz;
-        *pz = temp;
+    if(*ponteiro_x > *ponteiro_z) {
+        temp = *ponteiro_x;
+        *ponteiro_x = *ponteiro_z;
+        *ponteiro_z = temp;
     }
-    if(*py > *pz) {
-        temp = *py;
-        *py = *pz;
-        *pz = temp;
+    if(*ponteiro_y > *ponteiro_z) {
+        temp = *ponteiro_y;
+        *ponteiro_y = *ponteiro_z;
+        *ponteiro_z = temp;
     }
 
     return 0;
 }
 
-int main()
-{
+int main(){
     int x = 0, y = 0, z = 0, resultado = 0;
-    int *px = &x, *py = &y, *pz = &z;
+    int *ponteiro_x = &x, *ponteiro_y = &y, *ponteiro_z = &z;
 
-    printf("Digite o valor X: "); scanf("%d", &x);
-    printf("Digite o valor Y: "); scanf("%d", &y);
-    printf("Digite o valor Z: "); scanf("%d", &z);
+    printf("Informe o valor X: "); scanf("%d", &x);
+    printf("Informe o valor Y: "); scanf("%d", &y);
+    printf("Informe o valor Z: "); scanf("%d", &z);
 
-    resultado = ordenador(px, py, pz);
+    resultado = ordenador(ponteiro_x, ponteiro_y, ponteiro_z);
 
-    printf("Valor de X - %d | Valor de Y - %d | Valor de Z - %d", *px, *py, *pz);
+    printf("Valor de X - %d | Valor de Y - %d | Valor de Z - %d", *ponteiro_x, *ponteiro_y, *ponteiro_z);
 
     return 0;
 }

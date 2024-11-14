@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+int main(){
     int x = 0, y = 0;
 
     int *px, *py;
@@ -23,8 +22,7 @@ int main()
     return 0;
 }
 
-void altera_valor(int *x, int *y)
-{
+void altera_valor(int *x, int *y){
     int temp = *x;
     *x = *y;
     *y = temp;

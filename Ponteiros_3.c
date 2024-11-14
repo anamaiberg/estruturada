@@ -1,22 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+int main(){
     int x, y;
-    int *px, *py;
+    int *ponteiro_x, *ponteiro_y;
     int *maior_endereco;
 
-    printf("Digite o valor X: ");
+    printf("Informe o valor X: ");
     scanf("%d", &x);
 
-    printf("Digite o valor Y: ");
+    printf("Informe o valor Y: ");
     scanf("%d", &y);
 
-    px = &x;
-    py = &y;
+    ponteiro_x = &x;
+    ponteiro_y = &y;
 
-    maior_endereco = (px > py) ? px : py;
+    maior_endereco = (ponteiro_x > ponteiro_y) ? ponteiro_x : ponteiro_y;
 
     printf("Conteudo do maior endereco: %d\n", *maior_endereco);
 
