@@ -2,19 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Definição da estrutura Aluno
 struct Aluno {
     char nome[30];
     int matricula;
     int media;
 };
 
-// Função para preencher os dados de um aluno
-void preencherAlunos(struct Aluno *alunos, int quantidade) {
+void Preencher_alunos(struct Aluno *alunos, int quantidade) {
     for (int i = 0; i < quantidade; i++) {
         printf("Aluno %d:\n", i + 1);
         printf("Nome: ");
-        scanf(" %[^\n]s", alunos[i].nome);
+        scanf(" %29s", alunos[i].nome);
         printf("Matrícula: ");
         scanf("%d", &alunos[i].matricula);
         printf("Média: ");
@@ -23,8 +21,7 @@ void preencherAlunos(struct Aluno *alunos, int quantidade) {
     }
 }
 
-// Função para exibir os dados dos alunos
-void exibirAlunos(struct Aluno *alunos, int quantidade) {
+void Exibir_alunos(struct Aluno *alunos, int quantidade) {
     printf("\nDados dos alunos:\n");
     for (int i = 0; i < quantidade; i++) {
         printf("Aluno %d:\n", i + 1);
@@ -35,52 +32,53 @@ void exibirAlunos(struct Aluno *alunos, int quantidade) {
 }
 
 int main() {
-    // Exemplo 1: Uso de malloc
-    printf("Usando malloc:\n");
-    int n1 = 2;
-    struct Aluno *turma1 = (struct Aluno *)malloc(n1 * sizeof(struct Aluno));
+    // 1- malloc
+    printf("Alocando memória com malloc:\n");
+    int num_alunos_1 = 10;
+    struct Aluno *turma1 = (struct Aluno *)malloc(num_alunos_1 * sizeof(struct Aluno));
     if (turma1 == NULL) {
-        printf("Erro ao alocar memória com malloc.\n");
+        perror("Erro ao alocar memória para turma1");
         return 1;
     }
-    preencherAlunos(turma1, n1);
-    exibirAlunos(turma1, n1);
-    free(turma1); // Libera a memória alocada com malloc
+    Preencher_alunos(turma1, num_alunos_1);
+    Exibir_alunos(turma1, num_alunos_1);
+    free(turma1);
 
-    // Exemplo 2: Uso de calloc
+    // 2- calloc
     printf("Usando calloc:\n");
-    int n2 = 3;
-    struct Aluno *turma2 = (struct Aluno *)calloc(n2, sizeof(struct Aluno));
+    int num_alunos_2 = 5;
+    struct Aluno *turma2 = (struct Aluno *)calloc(num_alunos_2, sizeof(struct Aluno));
     if (turma2 == NULL) {
-        printf("Erro ao alocar memória com calloc.\n");
+        perror("Erro ao alocar memória para turma2");
         return 1;
     }
-    preencherAlunos(turma2, n2);
-    exibirAlunos(turma2, n2);
-    free(turma2); // Libera a memória alocada com calloc
+    Preencher_alunos(turma2, num_alunos_2);
+    Exibir_alunos(turma2, num_alunos_2);
+    free(turma2);
 
-    // Exemplo 3: Uso de realloc
+    // 3- realloc
     printf("Usando realloc:\n");
-    int n3 = 2;
-    struct Aluno *turma3 = (struct Aluno *)malloc(n3 * sizeof(struct Aluno));
+    int num_alunos_3 = 3;
+    struct Aluno *turma3 = (struct Aluno *)malloc(num_alunos_3 * sizeof(struct Aluno));
     if (turma3 == NULL) {
-        printf("Erro ao alocar memória inicial com malloc.\n");
+        perror("Erro ao alocar memória para turma3");
         return 1;
     }
-    preencherAlunos(turma3, n3);
+    Preencher_alunos(turma3, num_alunos_3);
 
-    // Redimensionar a memória para mais alunos
-    int novoTamanho = 4;
-    turma3 = (struct Aluno *)realloc(turma3, novoTamanho * sizeof(struct Aluno));
-    if (turma3 == NULL) {
-        printf("Erro ao redimensionar memória com realloc.\n");
+    int novo_tamanho = 15;
+    struct Aluno *temp = (struct Aluno *)realloc(turma3, novo_tamanho * sizeof(struct Aluno));
+    if (temp == NULL) {
+        perror("Erro ao realocar memória para turma3");
+        free(turma3); 
         return 1;
     }
+    turma3 = temp;
 
-    printf("Adicione mais %d alunos:\n", novoTamanho - n3);
-    preencherAlunos(turma3 + n3, novoTamanho - n3);
-    exibirAlunos(turma3, novoTamanho);
-    free(turma3); // Libera a memória alocada/redimensionada com realloc
+    printf("Adicione mais %d alunos:\n", novo_tamanho - num_alunos_3);
+    Preencher_alunos(turma3 + num_alunos_3, novo_tamanho - num_alunos_3);
+    Exibir_alunos(turma3, novo_tamanho);
+    free(turma3);
 
     return 0;
 }
