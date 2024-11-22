@@ -1,0 +1,54 @@
+1- void *malloc(int tamanho)
+
+Parâmetro: 
+tamanho - número de bytes a serem alocados.
+
+Retorno: Retorna um ponteiro genérico (void *) para o início do bloco de memória alocado.
+Retorna NULL se a alocação falhar.
+
+Características: A memória não é inicializada. Ou seja, o conteúdo pode conter "lixo" da memória.
+
+Exemplo:
+    int *lista = (int *)malloc(10 * sizeof(int)); // Aloca memória para 10 inteiros
+    if (lista == NULL) {
+        printf("Falha na alocação de memória\n");
+    }
+
+2- void *calloc(int numero_elementos, int tamanho_elemento)
+
+Parâmetros:
+numero_elementos - número de elementos que deseja alocar.
+tamanho_elemento - tamanho, em bytes, de cada elemento.
+
+Retorno: Retorna um ponteiro genérico (void *) para o início do bloco de memória alocado.
+
+Características: Inicializa a memória com zeros. Geralmente usada para alocar estruturas 
+de dados como arrays e garantir que seus elementos sejam inicializados com zero.
+
+Exemplo:
+    int *array = (int *)calloc(10, sizeof(int)); // Aloca e inicializa 10 inteiros com 0
+    if (array == NULL) {
+        printf("Falha na alocação de memória\n");
+    }
+
+3- void *realloc(void *area_alocada, int novo_tamanho)
+
+Parâmetros:
+area_alocada - ponteiro para a área de memória previamente alocada (com malloc, calloc ou realloc).
+novo_tamanho - novo tamanho desejado, em bytes.
+                    
+Retorno: Retorna um ponteiro genérico (void *) para o início do bloco redimensionado.
+Se o redimensionamento falhar, retorna NULL. A memória original permanece inalterada nesse caso.
+Se o novo_tamanho for 0, pode liberar a memória e retornar NULL (comportamento depende da implementação).
+
+Características: Se o novo tamanho for maior, o conteúdo existente será preservado, 
+mas a nova memória adicionada não será inicializada. Se o bloco precisar ser realocado 
+para outro local (devido à falta de espaço imediato), os dados antigos são copiados 
+para o novo local.
+
+Exemplo:
+    int *array = (int *)malloc(5 * sizeof(int)); // Aloca espaço para 5 inteiros
+    array = (int *)realloc(array, 10 * sizeof(int)); // Redimensiona para 10 inteiros
+    if (array == NULL) {
+        printf("Falha no redimensionamento da memória\n");
+    }
