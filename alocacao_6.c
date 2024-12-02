@@ -10,7 +10,7 @@ void Inserir(int *memoria, int bytes){
         if(i==posicao){
             printf("Informe o valor: ");
             scanf("%d", &valor);
-            *memoria[i] = valor;
+            memoria[i] = valor;
         }
     }
 }
