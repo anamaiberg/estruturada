@@ -1,7 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Inserir()
+void Inserir(int *memoria, int bytes){
+    int posicao, valor;
+    printf("Em qual posicao voce gostaria de inserir um valor? ");
+    scanf("%d", &posicao);
+    
+    for(int i=0; i<bytes; i++){
+        if(i==posicao){
+            printf("Informe o valor: ");
+            scanf("%d", &valor);
+            *memoria[i] = valor;
+        }
+    }
+}
+
+void Consultar(int *memoria, int bytes){
+    int posicao, valor;
+    printf("Qual a posicao em que voce gostaria de consultar um valor? ");
+    scanf("%d", &posicao);
+    
+    for(int i=0; i<bytes; i++){
+        if(i==posicao){
+            printf("O valor da posicao %d e: %d", i, memoria[i]);
+        }
+    }
+}
 
 void Imprimir(int *memoria, int bytes){
     for(int i=0; i<bytes; i++){
@@ -27,7 +51,6 @@ int main(){
             Imprimir(memoria, bytes);
         case 2:
             Consultar(memoria, bytes);
-            Imprimir(memoria, bytes);
         default:
             printf("Opcao invalida. Tente novamente");
 
