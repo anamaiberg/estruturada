@@ -1,16 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void Preenche_vetor(int *vetor, int tamanho){
-    for(int i=0; i<tamanho; i++){
-        printf("Informe o valor %d do vetor: ", i+1);
-        scanf("%d", &vetor[i]);
-    }
-}
+void Inserir()
 
-void Imprime(int *vetor, int tamanho){
-    for(int i=0; i<tamanho; i++){
-        printf("%d ", vetor[i]);
+void Imprimir(int *memoria, int bytes){
+    for(int i=0; i<bytes; i++){
+        printf("%d ", memoria[i]);
     }
 }
 
@@ -23,7 +18,7 @@ int main(){
 
     memoria = (int*) calloc (bytes, sizeof(int));
 
-    printf("Voce deseja:\n1- : Inserir um valor em uma determinada posiçãoda memoria\n2- Consultar o valor contido em uma determinada posição da memoria\n1 ou 2:");
+    printf("Voce deseja:\n1- : Inserir um valor em uma determinada posicao da memoria\n2- Consultar o valor contido em uma determinada posicao da memoria\n1 ou 2:");
     scanf("%d", &opcao);
 
     switch(opcao){
