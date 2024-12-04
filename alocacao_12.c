@@ -23,6 +23,26 @@ void Solicitar(struct Produto *lista, int N) {
     }
 }
 
+void Encontra_maior_preco(struct Produto *lista, int N){
+    struct Produto maior=lista[0];
+    for(int i=1; i<N; i++){
+        if(lista[i].preco>maior.preco){
+            maior=lista[i];
+        }
+    }
+    printf("O produto com o maior preco e: %s", maior.nome);
+}
+
+void Encontra_maior_quantidade(struct Produto *lista, int N){
+    struct Produto maior=lista[0];
+    for(int i=1; i<N; i++){
+        if(lista[i].quantidade>maior.quantidade){
+            maior=lista[i];
+        }
+    }
+    printf("O produto com a maior quantidade disponivel e: %s", maior.nome);
+}
+
 int main() {
     struct Produto *lista;
     int N;
@@ -39,8 +59,10 @@ int main() {
 
     printf("Informe os dados dos produtos\n");
     Solicitar(lista, N);
+    
+    Encontra_maior_preco(lista, N);
+    Encontra_maior_quantidade(lista, N);
 
-    // Liberação de memória
     free(lista);
 
     return 0;
