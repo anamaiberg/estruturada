@@ -11,7 +11,7 @@ int main()
         scanf("%d", &vetor[i]);
         if(vetor[i] >= 0){
             tamanho++;
-            void* realloc(void* vetor, size_t tamanho);
+            vetor = (int *) realloc(vetor, tamanho * sizeof(int));
         }else{
             break;
         }
@@ -21,5 +21,8 @@ int main()
     for(int i = 0; i<tamanho; i++){
         printf("Valor %d do vetor: %d\n",i+1,vetor[i]);
     }
+
+    free(vetor);
+
     return 0;
 }

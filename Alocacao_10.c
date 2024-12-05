@@ -32,5 +32,7 @@ int main(){
     
     printf("10 primeiros numeros do vetor: ");
     Imprime(vetor);
+
+    free(vetor);
     
 }
